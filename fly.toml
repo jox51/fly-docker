@@ -1,0 +1,18 @@
+# fly.toml app configuration file generated for redis-docker on 2025-04-30T17:10:33-04:00
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = 'redis-docker'
+primary_region = 'iad'
+
+[build]
+
+[[mounts]]
+  source = 'data'
+  destination = '/data'
+
+[[vm]]
+  memory = '2gb'
+  cpu_kind = 'shared'
+  cpus = 2
