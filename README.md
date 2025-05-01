@@ -41,7 +41,8 @@ In your Laravel application, make these configuration adjustments:
 1. Set the Redis connection in your `.env`:
 
 ```
-REDIS_HOST=your-redis-app.internal
+REDIS_HOST=redis://default:your_password@your-redis-app.internal:6379
+REDIS_URL=redis://default:your_password@your-redis-app.internal:6379
 REDIS_PASSWORD=your_password
 REDIS_PORT=6379
 ```
@@ -56,8 +57,17 @@ REDIS_PORT=6379
         'host' => env('REDIS_HOST', '127.0.0.1'),
         'password' => env('REDIS_PASSWORD', null),
         'port' => env('REDIS_PORT', 6379),
-        'database' => 1, // This is important
+        'database' => 1, <<---- Ensure this is set to 1
     ],
+
+     'cache' => [
+            'url' => env('REDIS_URL'),
+            'host' => env('REDIS_HOST', '127.0.0.1'),
+            'username' => env('REDIS_USERNAME'),
+            'password' => env('REDIS_PASSWORD'),
+            'port' => env('REDIS_PORT', '6379'),
+            'database' => 1, <<---- Ensure this is set to 1
+        ],
 ],
 ```
 
